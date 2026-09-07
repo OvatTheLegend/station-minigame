@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📡 SIGNAL//LOST // Research Station Control Desktop
 
-## Getting Started
+An immersive, narrative-driven retro-futuristic research station OS simulator and mystery puzzle game built with **Next.js 15**, **React 19**, **TypeScript**, and **Tailwind CSS**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+##  Features
+
+- ** Simulated Station Operating System (`station@signal-03`)**:
+  - Reusable, customizable window management system with normal, maximized, and minimized states.
+  - Synchronized live station UTC clock hook and interactive taskbar navigation.
+  - Persistent ambient server room background hum (`computer_lab.mp3`).
+
+- ** Interactive Signal Receiver (`ReceiverWindow`)**:
+  - Wideband frequency tuner ($88.0 - 108.0\text{ MHz}$) with digital LCD readout, stepped tuning buttons (`[-1.0]`, `[-0.1]`, `[+0.1]`, `[+1.0]`), and precision slider.
+  - Dynamic 20-bar CSS equalizer visualizer and pulsing radar carrier lock beacon.
+  - **Dynamic Audio Layering**: Crossfades between ambient radio static and eerie signal pulse when locked on `104.5 MHz`.
+  - **Cross-App Data Extraction**: Clicking *"Record & Extract"* plays a notification chime and dynamically generates new intercept files in the Files app.
+
+- ** Interactive Command Terminal (`TerminalWindow`)**:
+  - Station command-line prompt supporting `/help`, `/status`, `/scan`, `/decode <KEY>`, and `/hack`.
+  - Timed matrix decryption cascade with automated smooth auto-scrolling (`useRef` + `useEffect`).
+  - Audio-synced character-by-character typewriter streaming effect on countermeasure activation.
+
+- ** Persistent Files & Notes (`FilesWindow` & `NotesWindow`)**:
+  - Station logs, previous operator notes (*Operator Logan* lore), and encrypted transmission files.
+  - Live in-app file viewer with interactive text editing and persistent note scratchpad.
+
+- ** Firewall Defense Minigame (`FirewallWindow`)**:
+  - Fullscreen emergency lockdown overlay covering the fake desktop and taskbar.
+  - **3-Stage Tactical Flow**: Critical Alarm ➔ System Briefing ➔ $3 \times 3$ Memory Node Grid minigame.
+  - 3-2-1 central countdown overlay with asynchronous sequence broadcast.
+  - Randomized 5-node security sequence, cyan/red instant color feedback, and anti-spam race-condition protection.
+
+---
+
+##  Tech Stack
+
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Library:** [React 19](https://react.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Audio:** Web Audio API & HTML5 Audio Engine
+
+---
+
+##  Project Architecture
+
+```text
+src/
+├── app/
+│   ├── game/
+│   │   └── page.tsx              # Central game orchestrator & state manager
+│   ├── globals.css               # Global styles, animations & custom scrollbars
+│   ├── layout.tsx                # Root HTML layout
+│   └── page.tsx                  # Landing / Home redirect
+├── components/
+│   ├── DekstopIcons/
+│   │   ├── DekstopIcon.tsx       # Reusable desktop application shortcut
+│   │   └── TaskBarItem.tsx       # Reusable taskbar item
+│   ├── Layout/
+│   │   ├── TopBar.tsx            # Top header with station status
+│   │   └── BottomBar.tsx         # Bottom status & network bar
+│   └── Windows/
+│       ├── Window.tsx            # Generic reusable window shell wrapper
+│       ├── FilesWindow.tsx       # File manager & live editor
+│       ├── TerminalWindow.tsx    # Interactive terminal & decryption module
+│       ├── ReceiverWindow.tsx    # Frequency tuner & radio stream analyzer
+│       ├── NotesWindow.tsx       # Operator notes scratchpad
+│       └── FirewallWindow.tsx    # Emergency 3x3 memory grid minigame overlay
+└── hooks/
+    ├── useAudioFX.ts             # Web Audio synthesizer & chime effects
+    └── useStationTime.ts         # Synchronized live UTC station clock hook
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+##  Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+Make sure you have **Node.js 18+** installed on your machine.
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/<your-username>/mini-game.git
+   cd mini-game
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+4. Open your browser and navigate to:
+   ```text
+   http://localhost:3000/game
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
