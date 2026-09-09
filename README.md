@@ -1,4 +1,4 @@
-# 📡 SIGNAL//LOST // Research Station Control Desktop
+#  SIGNAL//LOST // Research Station Control Desktop
 
 An immersive, narrative-driven retro-futuristic research station OS simulator and mystery puzzle game built with **Next.js 15**, **React 19**, **TypeScript**, and **Tailwind CSS**.
 
